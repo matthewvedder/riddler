@@ -1,17 +1,33 @@
+<div class="row">
+  <div class="medium-6 medium-centered large-4 large-centered columns">
+
 <%= form_for(@riddle) do |f| %>
-  <% if @riddle.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@riddle.errors.count, "error") %> prohibited this riddle from being saved:</h2>
+  <div class="row column log-in-form">
+    <h4 class="text-center">Create A New Riddle Here!</h4>
+    <% if @riddle.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@riddle.errors.count, "error") %> prohibited this riddle from being saved:
+        </h2>
 
-      <ul>
-      <% @riddle.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% @riddle.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :Riddle %><br />
+      <%= f.text_field :question %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :Answer %><br />
+      <%= f.text_field :answer %>
+
+    <div class="actions">
+      <%= f.submit "Create", :class => "button expanded" %>
+    </div>
 <% end %>
