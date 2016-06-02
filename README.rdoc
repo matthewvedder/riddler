@@ -1,3 +1,5 @@
 == Riddler
 
-This app is going to be for gamified riddles
+https://quiet-citadel-98886.herokuapp.com/
+
+This is a riddle gaming app
