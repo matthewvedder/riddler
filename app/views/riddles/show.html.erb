@@ -1,9 +1,23 @@
-<%= @riddle.question %>
+  <div id="riddle-form">
+    <h4 class="text-center"><%= @riddle.question %></h4>
+    <h4 class="text-center" id="answer" style="display:none;"><%= @riddle.answer %></h4>
+    
+    <div class="row">
+	  <div class="large-12.columns">
+	    <input class="text-center" type="text" placeholder="What's you're best guess?"/>
+	  </div>
+  	</div>
 
-<div id="answer" style="display:none;"><%= @riddle.answer %></div>
+    <div class="row actions">
+   	  <div class="large-4.columns">
+      <p><a type="submit" class="button expanded success text-center">Guess</a></p>
+      <p><a class="button expanded tiny alert text-center" id="answer_button">Show Answer</a><p>
+    </div>
+  </div>
 
 
-<div id="answer_button" class="button">Answer</div>
-<%= @riddle.id %>
+
+
+
 
 
