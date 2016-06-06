@@ -2,6 +2,7 @@ class RiddlesController < ApplicationController
 	# better way than to query the database twice?
   def show
     @riddle ||= Riddle.find(rand(1..Riddle.count))
+    @message ||= nil
   end
 
   def create
@@ -21,21 +22,24 @@ class RiddlesController < ApplicationController
 
   def guess
     guess = guess_params[:guess]
-    puts guess * 50
     @riddle = Riddle.find(guess_params[:riddle_id])
-    success if guess == @riddle.answer else guess_again
-    render :show
+    if guess == @riddle.answer
+      return success
+    else
+      return guess_again
+    end
   end
 
   def success
     puts "Great success!" * 50
     @riddle = Riddle.find(rand(1..Riddle.count))
     flash.now[:notice] = "That's correct! I knew you could do it!"
-
+    render :show
   end
 
   def guess_again
     flash.now[:notice] = "Wrong answer #{ email_without_domain }!"
+    render :show
   end
 
 
