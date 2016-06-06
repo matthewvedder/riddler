@@ -1,19 +1,30 @@
-  <div id="riddle-form">
-    <h4 class="text-center"><%= @riddle.question %></h4>
-    <h4 class="text-center" id="answer" style="display:none;"><%= @riddle.answer %></h4>
-    
-    <div class="row">
-	  <div class="large-12.columns">
-	    <input class="text-center" type="text" placeholder="What's you're best guess?"/>
-	  </div>
-  	</div>
+<div id="riddle-form">
+  <h4 class="text-center"><%= @riddle.question %></h4>
+  <div  id="answer" style="display:none;">
+    <div id="har"></div>
+      <h6 class="text-center"> You Cheated! I guess that's okay though...</h6>
+      <h6 class="text-center">The answer is:</h6>
+      <h4 class="text-center"><%= @riddle.answer %></h4>
+    </div>
 
+    <h6 id="har"></h6>
+
+  <div class="row">
     <div class="row actions">
    	  <div class="large-4.columns">
-      <p><a type="submit" class="button expanded success text-center">Guess</a></p>
-      <p><a class="button expanded tiny alert text-center" id="answer_button">Show Answer</a><p>
-    </div>
+        <%= form_tag riddles_guess_path, id: "guess_form" do %>
+          <%= hidden_field_tag(:riddle_id,  @riddle.id ) %>
+          <%= text_field_tag :guess, "", class: "text-center", placeholder: "What's you're best guess?" %>
+          <%= submit_tag "Guess", class: "button expanded success" %>
+          <a class="button expanded alert tiny right" id="answer_button">Show Answer</a>
+
+        <% end %>
   </div>
+</div>
+
+
+
+
 
 
 

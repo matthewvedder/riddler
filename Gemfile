@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 gem 'devise'
+gem 'therubyracer'
 gem 'faker'
 gem 'foundation-rails'
 gem 'bootstrap-sass'

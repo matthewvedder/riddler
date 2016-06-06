@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get 'users/update'
 
+  post 'riddles/guess' => 'riddles#guess'
+
+
   devise_for :users
   resources :riddles
   # The priority is based upon order of creation: first created -> highest priority.
