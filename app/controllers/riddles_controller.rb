@@ -23,7 +23,7 @@ class RiddlesController < ApplicationController
   def guess
     @guess = guess_params[:guess]
     @riddle = Riddle.find(guess_params[:riddle_id])
-    if correct_guess? == true
+    if correct_guess?
       return success
     else
       return guess_again
