@@ -21,9 +21,9 @@ class RiddlesController < ApplicationController
   end
 
   def guess
-    guess = guess_params[:guess]
+    @guess = guess_params[:guess]
     @riddle = Riddle.find(guess_params[:riddle_id])
-    if guess == @riddle.answer
+    if correct_guess? == true
       return success
     else
       return guess_again
@@ -41,11 +41,20 @@ class RiddlesController < ApplicationController
     if current_user
       flash.now[:notice] = "Wrong answer #{ email_without_domain }!"
     else
-      flash.now[:notice] = "Guess again Mufasa!"
+      flash.now[:notice] = "Guess again friend!"
     end
     render :show
   end
 
+  def correct_guess?
+    strip_punctuation(@guess) == strip_punctuation(@riddle.answer)
+    #puts " guess #{strip_punctuation(@guess)} "
+    #puts " answer #{strip_punctuation(@riddle.answer)} "
+  end
+
+  def strip_punctuation(string)
+    string.gsub(/\W/, '').downcase!
+  end
 
   private
     def riddle_params
