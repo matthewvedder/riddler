@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425230242) do
+ActiveRecord::Schema.define(version: 20160606231201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20160425230242) do
     t.text     "question"
     t.text     "answer"
     t.integer  "upvotes"
+    t.integer  "user_id"
   end
+
+  add_index "riddles", ["user_id"], name: "index_riddles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

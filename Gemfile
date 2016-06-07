@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'devise'
 gem 'therubyracer'
-gem 'faker'
 gem 'foundation-rails'
 gem 'bootstrap-sass'
 gem 'pg'
@@ -36,8 +35,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'faker', '~> 1.6', '>= 1.6.1'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
+  gem 'factory_girl_rails', '~> 4.5'
+  gem 'shoulda'
+  gem 'launchy'
+  gem 'valid_attribute'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-rails'
+  gem 'capybara'
 end
 
 group :development do
