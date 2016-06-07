@@ -38,7 +38,11 @@ class RiddlesController < ApplicationController
   end
 
   def guess_again
-    flash.now[:notice] = "Wrong answer #{ email_without_domain }!"
+    if current_user
+      flash.now[:notice] = "Wrong answer #{ email_without_domain }!"
+    else
+      flash.now[:notice] = "Guess again Mufasa!"
+    end
     render :show
   end
 
